@@ -107,19 +107,11 @@ def get_info(phone_number):
 
 	print('\n')
 
-
-
 if len(sys.argv) <= 1:
 	
 	print(banner + msg)
 
-else:
-
-	print(banner)
-	phone_number = sys.argv[1]
-	get_info(phone_number)
-
-elif sys.argv[1] == '--list'
+elif sys.argv[1] == '--list':
 
 	print(banner)
 	
@@ -136,9 +128,9 @@ elif sys.argv[1] == '--list'
 					
 					get_info(i)
 					
-					if choice == 'y'
-					with open("output.txt", "a") as f:
-    					print(get_info(i), file=f)
+					if choice == 'y':
+						with open("output.txt", "a") as f:
+							print(get_info(i), file=f)
 				
 		except:
 			
@@ -146,12 +138,18 @@ elif sys.argv[1] == '--list'
 			
 				
 				
-elif sys.argv[1] == '--help' or sys.argv[1] == '-h'
+elif sys.argv[1] == '--help' or sys.argv[1] == '-h':
 
 	print(banner + usage)
 
-elif sys.argv[1] == '--location'
+elif sys.argv[1] == '--location':
 
 	gps == sys.argv[2]
 	print(banner)
 	generate_maps_link(text,gps)
+	
+else:
+
+	print(banner)
+	phone_number = sys.argv[1]
+	get_info(phone_number)
