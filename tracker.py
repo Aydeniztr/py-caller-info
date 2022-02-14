@@ -80,10 +80,11 @@ def reset():
 #some functions to make the code easier to write
 #I am not gonna explain them they are all self explanatory
 	
-def generate_maps_link(text,gps):
+def generate_maps_link(gps):
 
-	gps_query = '/@'+ gps
-	maps = 'https://www.google.com/maps/place/'+ text + gps
+	string = ''.join(gps).replace("/", "").replace("Europe","")
+	gps_query = string
+	maps = 'https://www.google.com/maps/place/'+ gps_query
 	 
 	print ('\nsee the location in google maps:\n'+ maps)
 	
@@ -94,14 +95,14 @@ def get_info(phone_number):
 	
 	print(banner)
 
-	ni = phonenumbers.parse(str(phone_number), GB)
+	ni = phonenumbers.parse(str(phone_number))
 	print (ni)
 	
-	sp = carrier.name_for_number(ni, "en")
+	sp = carrier.name_for_number(ni,'en')
 	print(sp)
 	
 	tz = timezone.time_zones_for_number(ni)
-	print(tz)
+	print(''.join(tz))
 	
 	generate_maps_link(tz)
 
