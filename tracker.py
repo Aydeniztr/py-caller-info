@@ -14,27 +14,17 @@ banner = '''
  `Y8bood8P'  `Y888""8o o888o o888o `Y8bod8P' d888b            o888o o888o o888o o888o   `Y8bod8P' 
                                                                                                   
 author: Ahmet Yigit AYDENIZ                                                                                               
-                                                                                                  
 '''
 
-msg = '''
-
-info:
-
-
-
-
-'''
 
 usg = '''
-
 costum argumants:
 
-	'--help,-h'
+'--help,-h'
 
-	'--list'
+'--list'
 
-	'--location'
+'--location'
 
 '''
 
@@ -86,7 +76,7 @@ def generate_maps_link(gps):
 	gps_query = string
 	maps = 'https://www.google.com/maps/place/'+ gps_query
 	 
-	print ('\nsee the location in google maps:\n'+ maps)
+	print ('\nsee the location in google maps:\n'+ maps +'\n')
 	
 
 def get_info(phone_number):
@@ -106,11 +96,9 @@ def get_info(phone_number):
 	
 	generate_maps_link(tz)
 
-	print('\n')
-
 if len(sys.argv) <= 1:
 	
-	print(banner + msg)
+	print(banner + usg)
 
 elif sys.argv[1] == '--list':
 
@@ -119,12 +107,12 @@ elif sys.argv[1] == '--list':
 	while True:
 		
 		try:
-			
-			choice = input('Do you want to save the output in the output-logs.txt file ? (y/n):')
-			
+
 			with open ("list.txt", "r") as mylist:
 				data = mylist.read().splitlines()
-
+				
+				choice = input('Do you want to save the output in the output-logs.txt file ? (y/n):')
+				
 				for i in data:
 					
 					get_info(i)
@@ -132,22 +120,24 @@ elif sys.argv[1] == '--list':
 					if choice == 'y':
 						with open("output.txt", "a") as f:
 							print(get_info(i), file=f)
+					else:
+						exit()
 				
 		except:
 			
-			print('there in no file named list.txt or the file \nis empty.(please check the file)')
-			
+			print('there in no file named list.txt or the file \nis empty.(please check the file)\n')
+			exit()
 				
 				
 elif sys.argv[1] == '--help' or sys.argv[1] == '-h':
 
-	print(banner + usage)
+	print(banner + usg)
 
 elif sys.argv[1] == '--location':
 
-	gps == sys.argv[2]
+	gps = sys.argv[2]
 	print(banner)
-	generate_maps_link(text,gps)
+	generate_maps_link(gps)
 	
 else:
 
