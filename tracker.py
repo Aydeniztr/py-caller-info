@@ -3,7 +3,6 @@ import phonenumbers # mem_info(20100kb)
 import sys
 import os
 
-
 banner = '''
   .oooooo.             oooo  oooo                              o8o               .o88o.           
  d8P'  `Y8b            `888  `888                              `"'               888 `"           
