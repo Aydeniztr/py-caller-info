@@ -1,7 +1,5 @@
-from phonenumbers import carrier,timezone
-import phonenumbers # mem_info(20100kb)
-import sys
-import os
+from phonenumbers import parse,carrier,timezone # mem_info(20100kb)
+from sys import argv 
 
 
 banner = '''
@@ -85,7 +83,7 @@ def get_info(phone_number):
 	
 	print(banner)
 
-	ni = phonenumbers.parse(str(phone_number))
+	ni = parse(str(phone_number))
 	print (ni)
 	
 	sp = carrier.name_for_number(ni,'en')
@@ -96,11 +94,11 @@ def get_info(phone_number):
 	
 	generate_maps_link(tz)
 
-if len(sys.argv) <= 1:
+if len(argv) <= 1:
 	
 	print(banner + usg)
 
-elif sys.argv[1] == '--list':
+elif argv[1] == '--list':
 
 	print(banner)
 	
@@ -129,18 +127,18 @@ elif sys.argv[1] == '--list':
 			exit()
 				
 				
-elif sys.argv[1] == '--help' or sys.argv[1] == '-h':
+elif argv[1] == '--help' or argv[1] == '-h':
 
 	print(banner + usg)
 
-elif sys.argv[1] == '--location':
+elif argv[1] == '--location':
 
-	gps = sys.argv[2]
+	gps = argv[2]
 	print(banner)
 	generate_maps_link(gps)
 	
 else:
 
 	print(banner)
-	phone_number = sys.argv[1]
+	phone_number = argv[1]
 	get_info(phone_number)
